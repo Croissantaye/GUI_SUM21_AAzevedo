@@ -10,7 +10,11 @@ function init() {
         return;
     }
     
-    gl.clearColor( 1.0, 0.0, 1.0, 1.0 );
+    var R = Math.random();
+    var G = Math.random();
+    var B = Math.random();
+
+    gl.clearColor( R, G, B, 1.0 );
 
     render();
 }
@@ -19,4 +23,4 @@ function render() {
     gl.clear( gl.COLOR_BUFFER_BIT );
 }
 
-window.onload = init;
+window.onclick = init;
