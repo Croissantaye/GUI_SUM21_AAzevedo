@@ -16,6 +16,7 @@ function init() {
 }
 
 function render() {
+    // Cube.animate;
     Cube.render;
 }
 
