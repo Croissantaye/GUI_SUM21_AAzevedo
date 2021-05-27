@@ -19,14 +19,14 @@ function Cube( vertexShaderId, fragmentShaderId ) {
     this.positions = { 
         values : new Float32Array([
            // Add your list vertex positions here
-           0.5, 0.5, 0.5,
-           0.5, -0.5, 0.5,
-           -0.5, -0.5, 0.5,
-           -0.5, 0.5, 0.5,
-           0.5, 0.5, -0.5,
-           0.5, -0.5, -0.5,
-           -0.5, -0.5, -0.5,
-           -0.5, 0.5, -0.5
+           0.5, 0.5, 0.5,       // 0
+           0.5, -0.5, 0.5,      // 1
+           -0.5, -0.5, 0.5,     // 2
+           -0.5, 0.5, 0.5,      // 3
+           0.5, 0.5, -0.5,      // 4
+           0.5, -0.5, -0.5,     // 5
+           -0.5, -0.5, -0.5,    // 6
+           -0.5, 0.5, -0.5      // 7
             ]),
         numComponents : 3
     };
@@ -41,14 +41,17 @@ function Cube( vertexShaderId, fragmentShaderId ) {
             1, 2, 5,
             5, 2, 6, 
             //back face
-            4, 5, 6, 
-            4, 6, 7, 
+            4, 7, 5,
+            5, 7, 6,
+            //top face
+            4, 7, 0,
+            0, 7, 3,
             //left face
-            2, 3, 6,
-            6, 3, 7,
+            3, 7, 2,
+            2, 7, 6,
             //right face
-            4, 5, 0,
-            5, 1, 0
+            4, 0, 5,
+            5, 0, 1
         ])
     };
     this.indices.count = this.indices.values.length;
@@ -78,7 +81,7 @@ function Cube( vertexShaderId, fragmentShaderId ) {
  
         gl.bindBuffer( gl.ELEMENT_ARRAY_BUFFER, this.indices.buffer );
 
-        // gl.uniformMatrix4fv( MVLoc, gl.FALSE, flatten(this.MV) );
+        gl.uniformMatrix4fv( MVLoc, gl.FALSE, flatten(this.MV) );
 
         // Draw the cube's base
         gl.drawElements( gl.TRIANGLES, this.indices.count, gl.UNSIGNED_SHORT, 0 );
