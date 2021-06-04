@@ -11,8 +11,7 @@ function init() {
         alert("Unable to setup WebGL");
         return;
     }
-
-    gl.viewport(0, 0, canvas.clientWidth, canvas.height);
+    
     gl.clearColor( 0.8, 0.8, 0.8, 1.0 );
     gl.enable( gl.DEPTH_TEST );
 
@@ -24,7 +23,7 @@ function init() {
 function render() {
     gl.clear( gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT );
 
-    angle += 2.0; // degrees
+    angle += 2; // degrees
 
     cube.MV = rotate( angle, [1, 1, 0] );
   
